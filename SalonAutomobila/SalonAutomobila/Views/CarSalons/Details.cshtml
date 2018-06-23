@@ -1,0 +1,162 @@
+﻿@model SalonAutomobila.ViewModel.SalonListsCarsContractsViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CarSalon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CarSalons.PIB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarSalons.PIB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarSalons.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarSalons.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarSalons.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarSalons.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarSalons.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarSalons.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarSalons.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarSalons.Address)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CarSalons.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<h2>List of signed contracts with manufacturers </h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create","Contracts", new { id=Model.CarSalons.Id},null)
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Manufacturer")
+        </th>
+        <th>
+            @Html.DisplayName("Country")
+        </th>
+        <th>
+            @Html.DisplayName("City")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.ListContracts)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer.City)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<hr>
+
+<div>
+    <h2>List of available cars</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CarSalons.Name)
+            </th>
+            <th>
+                @Html.DisplayName("Manufacturer Name")
+            </th>
+            <th>
+                @Html.DisplayName("Model")
+            </th>
+            <th>
+                @Html.DisplayName("Year")
+            </th>
+            <th>
+                @Html.DisplayName("Engine Volume")
+            </th>
+            <th>
+                @Html.DisplayName("Color")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.ListCars)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CarSalon.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EngineVolume)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
